@@ -23,9 +23,16 @@
     android:layout_height="wrap_content" 
     android:text=""
     /> -->
-<LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout1"> 
-    <!-- <Button android:text="ADD" android:id="@+id/button1" android:layout_width="180dp" android:layout_height="54dp"></Button>
-    <Button android:text="DELETE" android:id="@+id/button2" android:layout_width="fill_parent" android:layout_height="fill_parent"></Button> -->
-</LinearLayout>
-<ListView android:id="@+id/list01" android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="wrap_content" ></ListView>
+	<LinearLayout 
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent" 
+		android:id="@+id/linearLayout1"> 
+	    <!-- <Button android:text="ADD" android:id="@+id/button1" android:layout_width="180dp" android:layout_height="54dp"></Button>
+	    <Button android:text="DELETE" android:id="@+id/button2" android:layout_width="fill_parent" android:layout_height="fill_parent"></Button> -->
+	</LinearLayout>
+	<ListView 
+		android:id="@+id/list01" 
+		android:orientation="vertical" 
+		android:layout_height="wrap_content" 
+		android:layout_width="wrap_content" />
 </LinearLayout>

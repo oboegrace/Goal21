@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -35,43 +33,54 @@ import android.widget.Toast;
 public class TestFineActivity extends Activity {
     /** Called when the activity is first created. */       
     Button Btadd;
-    Button ActionBarBtn_add;
+    Button ActionBarBtn_add;		//action bar, add new goal button
     ImageButton imagebt;
-    CheckBox checkBox1;//
+    ImageButton check;
+    CheckBox checkBox1;				//
     TextView ItemTitle;
     
 //TextView Current;
 //int Current =0;
     
-    public static final String PREF="Directoryhw3";
-    
-	//public static final String PREF_HEIGHT = "PREF_HEIGHT";
-	//public static final String PREF_WEIGHT = "PREF_WEIGHT";
-    HashMap<String, Object> select=new HashMap<String, Object>();
+    public static final String PREF="Directoryhw3";	//what is this?
+    HashMap<String, Object> select=new HashMap<String, Object>();	//array list: select
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.main);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);		//is this for self define title bar?
+        setContentView(R.layout.main);							//set content view: main.xml
         
+        Btadd=(Button)this.findViewById(R.id.button1);					//find view: btadd
+        ActionBarBtn_add=(Button)this.findViewById(R.id.addGoal);		//find view: action bar button
+        final ListView list = (ListView) findViewById(R.id.list01); 	//(?) why use 'final'? listview(list01) of main.xml
         
-        Btadd=(Button)this.findViewById(R.id.button1);
-        ActionBarBtn_add=(Button)this.findViewById(R.id.addGoal);
-        
-        final ListView list = (ListView) findViewById(R.id.list01); 
-        ListView.OnHierarchyChangeListener listitemclick = new ListView.OnHierarchyChangeListener() {
-        	
+        ListView.OnHierarchyChangeListener listitemclick = new ListView.OnHierarchyChangeListener() {//item click listener (listitemclick)
         	@Override
-        	public void onChildViewAdded(View parent, View child) {
-        	   //Button delbtn = (Button) child.findViewById(R.id.deletebutton);
-        	   //final TextView txtnum = (TextView) child.findViewById(R.id.number);
+        	public void onChildViewAdded(View parent, View child) {		//Called when a new child is added to a parent view.
+        		//Button delbtn = (Button) child.findViewById(R.id.deletebutton);//delete button
+        		//final TextView txtnum = (TextView) child.findViewById(R.id.number);
 
-        		  final TextView txtnum = (TextView) child.findViewById(R.id.ItemTitle);
+        		  final TextView txtnum = (TextView) child.findViewById(R.id.ItemTitle);	//find view: txtnum list.xml > item title (?) what this for?
         		  //final TextView Current = (TextView) child.findViewById(R.id.Current);
                   //imagebt = (ImageButton)child.findViewById(R.id.image1);
                   //checkBox1 = (CheckBox)child.findViewById(R.id.checkBox1);
-                  Log.e("","xxxxxxxxxxxxxx");
+        		  Log.d("goal","onChildViewAdded");
+        		  
+        		  check = (ImageButton)child.findViewById(R.id.btn_checkbox);
+                  //check.setImageDrawable(R.drawable.checkbox);
+                  check.setOnClickListener(new Button.OnClickListener(){
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						//check.setImageDrawable(R.drawable.checkbox_checked);
+						Log.d("goal","checked");
+					}
+                	  
+                	  
+                  });
+        		  //check.setOnClickListener(new OnClickListener())
                   
                   checkBox1.setOnClickListener(new CheckBox.OnClickListener()//�s�W
                   {
@@ -201,8 +210,8 @@ public class TestFineActivity extends Activity {
           });      
     
 
-    
-    ActionBarBtn_add.setOnClickListener(new Button.OnClickListener()//�s�W
+    //add new goal (action bar add button)
+    ActionBarBtn_add.setOnClickListener(new Button.OnClickListener()
     {
     	public void onClick(View V)
     	{

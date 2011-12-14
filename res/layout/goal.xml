@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"  
-  	android:orientation="vertical"
-  	android:layout_width="fill_parent"
-  	android:layout_height="fill_parent" android:weightSum="1" >
+  	android:weightSum="1" android:layout_width="match_parent" android:orientation="vertical" android:layout_height="match_parent">
   	<LinearLayout 
   		android:orientation="horizontal"
   		android:layout_width = "fill_parent"
@@ -31,16 +29,15 @@
     	android:layout_weight="0.02" 
     	android:layout_width="270dp"/> -->
     <LinearLayout android:id="@+id/linearLayout1" 
-    	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content" 
     	android:layout_weight="0.02" 
     	android:weightSum="1"
-    	android:background="@drawable/detailes_background">
+    	android:background="@drawable/detailes_background" android:layout_width="480px">
         <!-- <ImageView android:src="@drawable/focused" 
         	android:id="@+id/imageView1" 
         	android:layout_width="122dp" 
         	android:layout_height="77dp"/> -->
-        <LinearLayout android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:orientation="vertical" android:layout_weight="0.87">
+        <LinearLayout android:id="@+id/linearLayout2" android:orientation="vertical" android:layout_weight="0.87" android:layout_height="match_parent" android:layout_width="wrap_content">
             <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MAX"></TextView>
             <TextView android:layout_width="wrap_content" android:text="TextView" android:id="@+id/textView5" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content"></TextView>
             <TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Current"></TextView>

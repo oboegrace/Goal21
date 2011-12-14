@@ -28,7 +28,7 @@
         	android:src="@drawable/goal_background"
         	android:layout_width = "285px"
         	android:layout_height = "140px"/>
- -->        <ImageButton
+ -->    <ImageButton
         	android:id = "@+id/btn_checkbox"
         	android:src="@drawable/checkbox"
         	android:layout_width="80px"
