@@ -3,8 +3,6 @@ package test.android;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -42,7 +40,6 @@ public class TestFineActivity extends Activity {
 //TextView Current;
 //int Current =0;
     
-    public static final String PREF="Directoryhw3";	//what is this?
     HashMap<String, Object> select=new HashMap<String, Object>();	//array list: select
     
     @Override
@@ -76,61 +73,60 @@ public class TestFineActivity extends Activity {
 						// TODO Auto-generated method stub
 						//check.setImageDrawable(R.drawable.checkbox_checked);
 						Log.d("goal","checked");
+						//current++
+						//if current == max 
+						//max++
+						//if current == 21
+						//level++
+						//current = 0
 					}
                 	  
                 	  
                   });
         		  //check.setOnClickListener(new OnClickListener())
-                  
-                  checkBox1.setOnClickListener(new CheckBox.OnClickListener()//�s�W
-                  {
-                	  public void onClick(View V)
-                	{
+    ////////////OLD check box set on click listener//////////////////////                  
+                  checkBox1.setOnClickListener(new CheckBox.OnClickListener(){
+                	  public void onClick(View V){
                      
-                   	  if(checkBox1.isChecked()==true)
-                   	     { 
-                   	     
-                   	 LayoutInflater inflater = LayoutInflater.from(TestFineActivity.this.getBaseContext());  
-          	        final View textEntryView = inflater.inflate(R.layout.suredialoglayout, null);           	        
-          	      final AlertDialog.Builder builder = new AlertDialog.Builder(TestFineActivity.this);  
-      	        builder.setCancelable(false);  
-      	       // builder.setIcon(R.drawable.icon);  
-      	        builder.setTitle("你確定你完成了這項工作了嗎?");
+                		  if(checkBox1.isChecked()==true){ 
+                			  LayoutInflater inflater = LayoutInflater.from(TestFineActivity.this.getBaseContext());  
+                			  final View textEntryView = inflater.inflate(R.layout.suredialoglayout, null);           	        
+                			  final AlertDialog.Builder builder = new AlertDialog.Builder(TestFineActivity.this);  
+                			  builder.setCancelable(false);  
+                			  // builder.setIcon(R.drawable.icon);  
+                			  builder.setTitle("你確定你完成了這項工作了嗎?");
       	        
-          	        builder.setPositiveButton("確定",  
-          	                new DialogInterface.OnClickListener() {  
-          	                    public void onClick(DialogInterface dialog, int whichButton) { 
-          	                    	checkBox1.setChecked(true);
-          	                     
-          	                     	/*if(checkBox1.isChecked()==true)
-          	                     	{	
-          	                     	    Current=Current+1;
-
-          	                     	}*/
-          	                    }
-          	                  });
+                			  builder.setPositiveButton("確定",  
+                				  new DialogInterface.OnClickListener() {  
+                				  		public void onClick(DialogInterface dialog, int whichButton) { 
+                				  			checkBox1.setChecked(true);
+                				  			/*if(checkBox1.isChecked()==true)
+          	                     			{	
+          	                     	    		Current=Current+1;
+          	                     			}*/
+                				  		}//end of public void onClick
+          	                  	  }//end of Dialog Interface.onclicklistener()
+                			  );//end of set Positive Button
           	       
-          	        builder.setNegativeButton("取消",  
-          	                new DialogInterface.OnClickListener() {  
-          	                    public void onClick(DialogInterface dialog, int whichButton) {  
-          	                    	
-          	                    	checkBox1.setChecked(false);
-          	                 
-          	                    	
-          	                        setTitle("");  
-          	                     
-          	                    }  
-          	                });  
+                			 builder.setNegativeButton("取消",  
+                				 new DialogInterface.OnClickListener() {  
+          	                    	public void onClick(DialogInterface dialog, int whichButton) {  
+          	                    		checkBox1.setChecked(false);
+          	                    		setTitle("");   
+          	                    	}  
+          	                	}
+                			 );  
           		
-          		AlertDialog	alertDialog=builder.create();
-                  alertDialog.show();
+                			 AlertDialog alertDialog = builder.create();
+                			 alertDialog.show();
 
-          	}
-                	}
-          	      }); 
-               
+                		  }//end of if(checkBox1.isChecked()==true)
+                	  }//end of public void onClick(View V)
+          	      	}//CheckBox.OnClickListener
+                  ); //end of checkBox1.setOnClickListener
+    ////////////end of (OLD) check box set on click listener//////////////////////                 
                   
-                  imagebt.setOnClickListener(new Button.OnClickListener()//�s�W
+                  imagebt.setOnClickListener(new Button.OnClickListener()	//(?)
                   {
                   	public void onClick(View V)
                   	{
