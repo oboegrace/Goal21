@@ -82,61 +82,61 @@ public class TestFineActivity extends Activity {
                   });
         		  //check.setOnClickListener(new OnClickListener())
                   
-                  checkBox1.setOnClickListener(new CheckBox.OnClickListener()//�s�W
-                  {
-                	  public void onClick(View V)
-                	{
-                     
-                   	  if(checkBox1.isChecked()==true)
-                   	     { 
-                   	     
-                   	 LayoutInflater inflater = LayoutInflater.from(TestFineActivity.this.getBaseContext());  
-          	        final View textEntryView = inflater.inflate(R.layout.suredialoglayout, null);           	        
-          	      final AlertDialog.Builder builder = new AlertDialog.Builder(TestFineActivity.this);  
-      	        builder.setCancelable(false);  
-      	       // builder.setIcon(R.drawable.icon);  
-      	        builder.setTitle("你確定你完成了這項工作了嗎?");
-      	        
-          	        builder.setPositiveButton("確定",  
-          	                new DialogInterface.OnClickListener() {  
-          	                    public void onClick(DialogInterface dialog, int whichButton) { 
-          	                    	checkBox1.setChecked(true);
-          	                     
-          	                     	/*if(checkBox1.isChecked()==true)
-          	                     	{	
-          	                     	    Current=Current+1;
-
-          	                     	}*/
-          	                    }
-          	                  });
-          	       
-          	        builder.setNegativeButton("取消",  
-          	                new DialogInterface.OnClickListener() {  
-          	                    public void onClick(DialogInterface dialog, int whichButton) {  
-          	                    	
-          	                    	checkBox1.setChecked(false);
-          	                 
-          	                    	
-          	                        setTitle("");  
-          	                     
-          	                    }  
-          	                });  
-          		
-          		AlertDialog	alertDialog=builder.create();
-                  alertDialog.show();
-
-          	}
-                	}
-          	      }); 
+//                  checkBox1.setOnClickListener(new CheckBox.OnClickListener()//�s�W
+//                  {
+//                	  public void onClick(View V)
+//                	{
+//                     
+//                   	  if(checkBox1.isChecked()==true)
+//                   	     { 
+//                   	     
+//                   	 LayoutInflater inflater = LayoutInflater.from(TestFineActivity.this.getBaseContext());  
+//          	        final View textEntryView = inflater.inflate(R.layout.suredialoglayout, null);           	        
+//          	      final AlertDialog.Builder builder = new AlertDialog.Builder(TestFineActivity.this);  
+//      	        builder.setCancelable(false);  
+//      	       // builder.setIcon(R.drawable.icon);  
+//      	        builder.setTitle("你確定你完成了這項工作了嗎?");
+//      	        
+//          	        builder.setPositiveButton("確定",  
+//          	                new DialogInterface.OnClickListener() {  
+//          	                    public void onClick(DialogInterface dialog, int whichButton) { 
+//          	                    	checkBox1.setChecked(true);
+//          	                     
+//          	                     	/*if(checkBox1.isChecked()==true)
+//          	                     	{	
+//          	                     	    Current=Current+1;
+//
+//          	                     	}*/
+//          	                    }
+//          	                  });
+//          	       
+//          	        builder.setNegativeButton("取消",  
+//          	                new DialogInterface.OnClickListener() {  
+//          	                    public void onClick(DialogInterface dialog, int whichButton) {  
+//          	                    	
+//          	                    	checkBox1.setChecked(false);
+//          	                 
+//          	                    	
+//          	                        setTitle("");  
+//          	                     
+//          	                    }  
+//          	                });  
+//          		
+//          		AlertDialog	alertDialog=builder.create();
+//                  alertDialog.show();
+//
+//          	}
+//                	}
+//          	      }); 
                
                   
-                  imagebt.setOnClickListener(new Button.OnClickListener()//�s�W
-                  {
-                  	public void onClick(View V)
-                  	{
-                  		setTitle("選取了x"+txtnum.getText().toString());
-                  	}
-                  });  
+//                  imagebt.setOnClickListener(new Button.OnClickListener()//�s�W
+//                  {
+//                  	public void onClick(View V)
+//                  	{
+//                  		setTitle("選取了x"+txtnum.getText().toString());
+//                  	}
+//                  });  
         	 }
 
 			@Override
