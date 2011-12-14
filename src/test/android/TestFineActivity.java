@@ -36,7 +36,7 @@ public class TestFineActivity extends Activity {
     ImageButton check;
     CheckBox checkBox1;				//
     TextView ItemTitle;
-    
+    public static final String PREF="Directoryhw3";	//what is this?
 //TextView Current;
 //int Current =0;
     
@@ -52,6 +52,7 @@ public class TestFineActivity extends Activity {
         ActionBarBtn_add=(Button)this.findViewById(R.id.addGoal);		//find view: action bar button
         final ListView list = (ListView) findViewById(R.id.list01); 	//(?) why use 'final'? listview(list01) of main.xml
         
+        //******* List Item Click ********//        
         ListView.OnHierarchyChangeListener listitemclick = new ListView.OnHierarchyChangeListener() {//item click listener (listitemclick)
         	@Override
         	public void onChildViewAdded(View parent, View child) {		//Called when a new child is added to a parent view.
@@ -60,7 +61,8 @@ public class TestFineActivity extends Activity {
 
         		  final TextView txtnum = (TextView) child.findViewById(R.id.ItemTitle);	//find view: txtnum list.xml > item title (?) what this for?
         		  //final TextView Current = (TextView) child.findViewById(R.id.Current);
-                  //imagebt = (ImageButton)child.findViewById(R.id.image1);
+                  imagebt = (ImageButton)child.findViewById(R.id.lv);	//level button: imagebt
+        		  //imagebt = (ImageButton)child.findViewById(R.id.image1);
                   //checkBox1 = (CheckBox)child.findViewById(R.id.checkBox1);
         		  Log.d("goal","onChildViewAdded");
         		  
@@ -126,105 +128,110 @@ public class TestFineActivity extends Activity {
                   ); //end of checkBox1.setOnClickListener
     ////////////end of (OLD) check box set on click listener//////////////////////                 
                   
-                  imagebt.setOnClickListener(new Button.OnClickListener()	//(?)
+                  imagebt.setOnClickListener(new Button.OnClickListener()	//click the level icon of list item
                   {
                   	public void onClick(View V)
                   	{
+                  		Log.d("goal","選取了"+txtnum.getText().toString());
                   		setTitle("選取了x"+txtnum.getText().toString());
                   	}
                   });  
         	 }
 
 			@Override
-			public void onChildViewRemoved(View arg0, View arg1) {
+			public void onChildViewRemoved(View arg0, View arg1) {			//REMOVE list item...
 				// TODO Auto-generated method stub
 				
 			}};
 			
 			list.setOnHierarchyChangeListener(listitemclick );
+		//******* End of List Item Click ********// 
            // list.setAdapter(adapter);
         
-        //�ͦ��ʺAarray�A�[�J�ƾ�  
-        final ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();  
-          
-      	SharedPreferences settings1= getSharedPreferences(PREF,0);
-      	Map<String,?>stmap = settings1.getAll();
+			//******* Array List: list item ******//
+			final ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();  
+
+			SharedPreferences settings1= getSharedPreferences(PREF,0);
+			Map<String,?>stmap = settings1.getAll();
       	
-      	for(String dataKey : stmap.keySet())   
-      	{   
-      		
-      		String k1=dataKey.substring(0,9);
-      		String k2=dataKey.substring(9);
-      		//Btdel.setText(k1);
-      		Log.e("xx",k1 ); 
-      	Log.e("xx",k2 ); 
-      		if(k1.equals("ItemTitle"))
-      		{
-      			String titlek=stmap.get(dataKey).toString();
-      		    //String textk=stmap.get("Current"+k2).toString();
-      			HashMap<String, Object> map = new HashMap<String, Object>();  
-      	         map.put("ItemTitle", titlek);  
-      	        // map.put("Current",textk);
-      	         listItem.add(map); 
-      			
-      		}
-      	}
-          
+			for(String dataKey : stmap.keySet())   
+			{   
+				String k1=dataKey.substring(0,9);
+				String k2=dataKey.substring(9);
+				//Btdel.setText(k1);
+				Log.e("xx",k1 ); 
+				Log.e("xx",k2 ); 
+				if(k1.equals("ItemTitle"))
+				{
+					String titlek=stmap.get(dataKey).toString();
+					//String textk=stmap.get("Current"+k2).toString();
+					HashMap<String, Object> map = new HashMap<String, Object>();  
+					map.put("ItemTitle", titlek);  
+					//map.put("Current",textk);
+					listItem.add(map); 	
+				}
+			}//end of for-loop
+		  
+		  //******* Simple Adapter: listItemAdapter ******//
           final SimpleAdapter listItemAdapter = new SimpleAdapter(this,listItem,R.layout.list,  
                 new String[] {"ItemTitle"},   
                 new int[] {R.id.ItemTitle}  
-          );    
+          );
           list.setAdapter(listItemAdapter); 
           //list.setOnHierarchyChangeListener(listener)
-          list.setOnItemClickListener(new OnItemClickListener() {  
-        	 
-        @Override  
-          public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {  
-             //ListView list = (ListView)arg1;
-            HashMap<String, Object> map2 = (HashMap<String, Object>) list.getItemAtPosition(arg2);
-            HashMap<String, Object> itemAtPosition = (HashMap<String, Object>) list.getItemAtPosition(arg2);
-            select= itemAtPosition;
+          
+          //******* Item Click Listener ******//
+          list.setOnItemClickListener(new OnItemClickListener() {  	 
+        	  @Override  
+        	  	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {  
+        		//ListView list = (ListView)arg1;
+        		  HashMap<String, Object> map2 = (HashMap<String, Object>) list.getItemAtPosition(arg2);
+        		  HashMap<String, Object> itemAtPosition = (HashMap<String, Object>) list.getItemAtPosition(arg2);
+        		  select= itemAtPosition;
     
-         	Intent intent = new Intent();
-         	intent.setClass(TestFineActivity.this,goal.class);
-         	Bundle bundle =new Bundle();
-         	bundle.putString("KEY_Goal", map2.get("ItemTitle").toString());
-         	//Integer.toString(Current);
+        		  Intent intent = new Intent();
+        		  intent.setClass(TestFineActivity.this,goal.class);
+        		  Bundle bundle =new Bundle();
+        		  bundle.putString("KEY_Goal", map2.get("ItemTitle").toString());
+        		  //Integer.toString(Current);
 
-         	Log.e("test", "1");
-         	//bundle.putString("KEY_Current", Integer.toString(Current));
-         	Log.e("KEY_Current"," Current");
-         	Log.e("test", "2");
-            intent.putExtras(bundle);
-            Log.e("test", "3");
-         	startActivity(intent);
-         	Log.e("test", "4");
+        		  Log.e("test", "1");
+        		  //bundle.putString("KEY_Current", Integer.toString(Current));
+        		  Log.e("KEY_Current"," Current");
+        		  Log.e("test", "2");
+        		  intent.putExtras(bundle);
+        		  Log.e("test", "3");
+        		  startActivity(intent);
+        		  Log.e("test", "4");
          	
              
-             setTitle("增加新的目標");
-          	}  
-          });      
+        		  setTitle("增加新的目標");
+          		}  
+          	}
+          );      
     
-
-    //add new goal (action bar add button)
-    ActionBarBtn_add.setOnClickListener(new Button.OnClickListener()
-    {
-    	public void onClick(View V)
-    	{
+          
+          
+          //****** ACTION BAR: ADD NEW ITEM ******//
+          ActionBarBtn_add.setOnClickListener(new Button.OnClickListener(){
+        	  
+        	  public void onClick(View V){			//add new goal (action bar add button)
     		    LayoutInflater inflater = LayoutInflater.from(TestFineActivity.this.getBaseContext());  
-    	        final View textEntryView = inflater.inflate(R.layout.dialoglayout, null);  
-    	        final EditText edtInput=(EditText)textEntryView.findViewById(R.id.edtInput); 
+    	        
+    		    final View textEntryView = inflater.inflate(R.layout.dialoglayout, null);  			//textEntryView: dialog layout
+    	        final EditText edtInput=(EditText)textEntryView.findViewById(R.id.edtInput); 		//edtInput: new name of goal
     	        //final EditText edtInput1=(EditText)textEntryView.findViewById(R.id.Current); 
     	        
     	        final AlertDialog.Builder builder = new AlertDialog.Builder(TestFineActivity.this);  
     	        builder.setCancelable(false);  
     	       // builder.setIcon(R.drawable.icon);  
     	        builder.setTitle("增加新的目標");  
+    	        builder.setView(textEntryView); 
     	        
-    	        builder.setView(textEntryView);  
+    	        //**** OK clicked ****///
     	        builder.setPositiveButton("ok",  
-    	                new DialogInterface.OnClickListener() {  
-    	                    public void onClick(DialogInterface dialog, int whichButton) { 
+    	            new DialogInterface.OnClickListener() {  
+    	                 public void onClick(DialogInterface dialog, int whichButton) { 
     	                    	
     	                    	String edtInputName=edtInput.getText().toString();
     	                    	
@@ -265,69 +272,11 @@ public class TestFineActivity extends Activity {
     		//builder.show(); 
 
     	}
-    });
-          
-//    Btadd.setOnClickListener(new Button.OnClickListener()//�s�W
-//    {
-//    	public void onClick(View V)
-//    	{
-//    		    LayoutInflater inflater = LayoutInflater.from(TestFineActivity.this.getBaseContext());  
-//    	        final View textEntryView = inflater.inflate(R.layout.dialoglayout, null);  
-//    	        final EditText edtInput=(EditText)textEntryView.findViewById(R.id.edtInput); 
-//    	        //final EditText edtInput1=(EditText)textEntryView.findViewById(R.id.Current); 
-//    	        
-//    	        final AlertDialog.Builder builder = new AlertDialog.Builder(TestFineActivity.this);  
-//    	        builder.setCancelable(false);  
-//    	       // builder.setIcon(R.drawable.icon);  
-//    	        builder.setTitle("增加新的目標");  
-//    	        
-//    	        builder.setView(textEntryView);  
-//    	        builder.setPositiveButton("ok",  
-//    	                new DialogInterface.OnClickListener() {  
-//    	                    public void onClick(DialogInterface dialog, int whichButton) { 
-//    	                    	
-//    	                    	String edtInputName=edtInput.getText().toString();
-//    	                    	
-//    	                    	if(edtInputName.equals(""))
-//    	                		{        	            			
-//    	                			Toast.makeText(TestFineActivity.this, "你確定你完成了這項工作了嗎?", Toast.LENGTH_SHORT).show();
-//    	                  		}
-//    	                    	        	                		        	            			        	                		       	                  		
-//    	                    	else{
-//    	                    	  HashMap<String, Object> map = new HashMap<String, Object>();  
-//    	                          map.put("ItemTitle",edtInput.getText() );  
-//    	                         // map.put("Current", 0 );  
-//    	                          listItem.add(map);  
-//    	                          listItemAdapter.notifyDataSetChanged();
-//    	                          
-//    	                  		  SharedPreferences settings= getSharedPreferences(PREF,0);
-//    	                		  Editor editor=settings.edit();
-//    	                          editor.putString("ItemTitle"+edtInput.getText().toString(), edtInput.getText().toString());
-//    	                       
-//    	                	
-//    	                		  editor.commit();
-//
-//    	                		  //alertDialog.dismiss();
-//    	                		  //alertDialog.cancel();
-//    	                    	}}  
-//    	                });  
-//
-//    	        builder.setNegativeButton("Cancel",  
-//    	                new DialogInterface.OnClickListener() {  
-//    	                    public void onClick(DialogInterface dialog, int whichButton) {  
-//    	                        setTitle("");  
-//    	                    }  
-//    	                });  
-//    		
-//    		AlertDialog	alertDialog=builder.create();
-//            alertDialog.show();
-//
-//    		//builder.show(); 
-//
-//    	}
-//    });
+          	}
+          );
+        //******END OF ACTION BAR: ADD NEW ITEM ******//
         
-}   
+    }   
 
     
     
