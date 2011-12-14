@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"  
-  	android:weightSum="1" android:layout_width="match_parent" android:orientation="vertical" android:layout_height="match_parent">
+  	android:weightSum="1" 
+  	android:layout_width="match_parent" 
+  	android:orientation="vertical" 
+  	android:layout_height="match_parent">
   	<LinearLayout 
   		android:orientation="horizontal"
   		android:layout_width = "fill_parent"
-  		android:layout_height="150px"
-  	>
+  		android:layout_height="150px">
   		<ImageButton
         	android:id = "@+id/arrow_prev"
         	android:src="@drawable/arrow_prev"
         	android:layout_width="80px"
-        	android:layout_height = "150px" android:clickable="true"/>
+        	android:layout_height = "150px"/>
         <ImageView 
         	android:id = "@+id/detail_lv"
         	android:src="@drawable/details_lv1_a"
@@ -21,33 +23,97 @@
         	android:id = "@+id/arrow_next"
         	android:src="@drawable/arrow_next"
         	android:layout_width="80px"
-        	android:layout_height = "150px" android:clickable="true"/>
+        	android:layout_height = "150px" />
   	</LinearLayout>
-   <!--  <TextView android:id="@+id/textView1" 
+   	<!--  <TextView android:id="@+id/textView1" 
     	android:text="TextView" 
     	android:layout_height="wrap_content" 
     	android:layout_weight="0.02" 
     	android:layout_width="270dp"/> -->
+    	
     <LinearLayout android:id="@+id/linearLayout1" 
     	android:layout_height="wrap_content" 
     	android:layout_weight="0.02" 
     	android:weightSum="1"
-    	android:background="@drawable/detailes_background" android:layout_width="480px">
+    	android:orientation="vertical" 
+    	android:background="@drawable/detailes_background" 
+    	android:layout_width="480px">
+    	
+    	<TextView android:id ="@+id/detail_goal_name"
+    		android:layout_width = "fill_parent"
+    		android:text="Drink water 2000 c.c." 
+    		android:gravity="bottom" 
+    		android:paddingBottom="20dp" 
+    		android:paddingLeft="20dp" 
+    		android:paddingRight="20dp" 
+    		android:paddingTop="60dp" android:layout_height="100dp" android:textSize="20dp"/>
+    	
+    	<TextView android:id ="@+id/detail_goal_current"
+    		android:layout_width = "fill_parent"
+    		android:text="21" 
+    		android:gravity="bottom|right" 
+    		android:layout_height="110dp"
+
+    		android:textSize="30dp"
+    		android:paddingRight="75dp"/>
+    	<TextView android:id = "@+id/detail_goal_max"
+    		android:layout_width = "fill_parent"
+    		android:text = "0"
+    		android:gravity="bottom|right"
+    		android:layout_height = "25dp"
+    		android:textSize = "15dp"
+    		android:paddingBottom="5dp"
+    		android:paddingRight="75dp"/>
+    	<TextView android:id = "@+id/detail_goal_start"
+    		android:layout_width = "fill_parent"
+    		android:text = "2011/12/14"
+    		android:gravity="bottom|right"
+    		android:layout_height = "25dp"
+    		android:textSize = "15dp"
+    		android:paddingBottom="5dp"
+    		android:paddingRight="40dp"/>
+    	<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout2">
+    		<!-- <ImageButton android:src="@drawable/" android:id="@+id/imageButton1" android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageButton> -->
+    		<Button android:layout_width="wrap_content" android:text="Button" android:layout_height="wrap_content" android:id="@+id/button1"></Button>
+    	</LinearLayout>	
+    	
+    		
+    </LinearLayout>
         <!-- <ImageView android:src="@drawable/focused" 
         	android:id="@+id/imageView1" 
         	android:layout_width="122dp" 
         	android:layout_height="77dp"/> -->
-        <LinearLayout android:id="@+id/linearLayout2" android:orientation="vertical" android:layout_weight="0.87" android:layout_height="match_parent" android:layout_width="wrap_content">
+        <!-- <LinearLayout android:id="@+id/linearLayout2" android:orientation="vertical" android:layout_weight="0.87" android:layout_height="match_parent" android:layout_width="wrap_content">
             <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MAX"></TextView>
             <TextView android:layout_width="wrap_content" android:text="TextView" android:id="@+id/textView5" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content"></TextView>
             <TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Current"></TextView>
             <TextView android:layout_width="wrap_content" android:text="TextView" android:id="@+id/textView6" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content"></TextView>
-        </LinearLayout>
-    </LinearLayout>
-    <TextView android:id="@+id/textView4" android:layout_height="wrap_content" android:layout_weight="0.02" android:layout_width="304dp" android:text="倒數幾天"></TextView>
-    <TextView android:layout_weight="0.02" android:layout_width="wrap_content" android:text="TextView" android:id="@+id/textView7" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
-    <ImageView android:layout_weight="0.02" android:layout_width="268dp" android:src="@android:drawable/stat_notify_chat" android:id="@+id/imageView2" android:layout_height="wrap_content"></ImageView>
+        </LinearLayout> -->
+	
+  <!--   <TextView android:id="@+id/textView4" 
+    	android:layout_height="wrap_content" 
+    	android:layout_weight="0.02" 
+    	android:layout_width="304dp" 
+    	android:text="倒數幾天"/>
+    <TextView 
+    	android:layout_weight="0.02" 
+    	android:layout_width="wrap_content" 
+    	android:text="TextView" 
+    	android:id="@+id/textView7" 
+    	android:layout_height="wrap_content" 
+    	android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <ImageView 
+    	android:layout_weight="0.02" 
+    	android:layout_width="268dp" 
+    	android:src="@android:drawable/stat_notify_chat" 
+    	android:id="@+id/imageView2" 
+    	android:layout_height="wrap_content"/>
    
-    <Button android:text="回到main家" android:id="@+id/button1" android:layout_weight="0.02" android:layout_width="212dp" android:layout_height="wrap_content"></Button>
+    <Button 
+    	android:text="回到main家" 
+    	android:id="@+id/button1" 
+    	android:layout_weight="0.02" 
+    	android:layout_width="212dp" 
+    	android:layout_height="wrap_content"/> -->
     
 </LinearLayout>
