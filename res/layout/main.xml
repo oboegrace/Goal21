@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/list_background"
+    android:weightSum="1">
+    <RelativeLayout android:layout_height="wrap_content" android:background="@drawable/medium"
+		android:id="@+id/relativeLayout1" android:layout_width="fill_parent">
+			<ImageView android:src="@drawable/title_list"
+				android:id="@+id/imageView1" android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				></ImageView>
+			<Button android:layout_width="wrap_content"
+				android:background="@drawable/actionbar_selector"
+				android:layout_height="wrap_content" 
+				android:id="@+id/addGoal"
+				android:layout_alignParentRight="true"
+				></Button>
+				</RelativeLayout>
+<!-- <TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    /> -->
+<LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout1"> 
+    <!-- <Button android:text="ADD" android:id="@+id/button1" android:layout_width="180dp" android:layout_height="54dp"></Button>
+    <Button android:text="DELETE" android:id="@+id/button2" android:layout_width="fill_parent" android:layout_height="fill_parent"></Button> -->
+</LinearLayout>
+<ListView android:id="@+id/list01" android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="wrap_content" ></ListView>
+</LinearLayout>
