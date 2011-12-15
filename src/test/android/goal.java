@@ -1,11 +1,7 @@
 package test.android;
 
-
-
 import java.text.DecimalFormat;
-
-
-
+import android.util.Log;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,46 +12,44 @@ import android.widget.TextView;
 
 
 public class goal extends Activity {
-	Button bt1;
-	TextView textView1;//Penguin
-	//TextView textView6;
+	Button btn_sos;
+	TextView goal_name;//Penguin
 	public String ngoal;//Penguin
 	//public String ncurrrent;//Penguin
-	//public static final String PREF_HEIGHT = "PREF_HEIGHT";
-	//public static final String PREF_WEIGHT = "PREF_WEIGHT";
+
 	
 	public void onCreate(Bundle savedInstanceState) {
+		Log.d("goal","Goal on create!!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.goal);
-        bt1=(Button)findViewById(R.id.button1);
-        textView1=(TextView)findViewById(R.id.textView1);//Penguin
-        showResults();////Penguin
-        bt1.setOnClickListener(new Button.OnClickListener()
+        Log.d("goal","find layout");
+        btn_sos=(Button)findViewById(R.id.button1);	//sos
+        goal_name=(TextView)findViewById(R.id.detail_goal_name);//Penguin
+        showResults(savedInstanceState);////Penguin
+
+        btn_sos.setOnClickListener(new Button.OnClickListener()
         {
         	public void onClick(View v)
         	{
-        	Intent intent = new Intent();
-        	intent.setClass(goal.this,TestFineActivity.class);
-        	startActivity(intent);
-        		
+        		Log.d("goal","SOS clicked");
+//        	Intent intent = new Intent();
+//        	intent.setClass(goal.this,TestFineActivity.class);
+//        	startActivity(intent);
+//        		
         	}
         	       	
         });
 	}
 	//Penguin
-	public void showResults(){
-		Log.e("test", "5");
+	public void showResults(Bundle savedInstanceState){
 		Bundle bundle = this.getIntent().getExtras();
-		String goal=bundle.getString("KEY_Goal");
-		Log.e("test", "6");
+		String goal = bundle.getString("KEY_Goal");
+		Log.d("goal", goal);
 		//String currrent=bundle.getString("KEY_currrent");
 		
-		Log.e("test", "7");
-		textView1.setText(goal);
-		Log.e("test", "8");
+		goal_name.setText(goal);
 		//textView6.setText(currrent);
-		Log.e("test", "9");
-		ngoal=bundle.getString("KEY_Goal");
+		//ngoal=bundle.getString("KEY_Goal");
 		//ncurrrent=bundle.getString("KEY_currrent");
 	}
 	

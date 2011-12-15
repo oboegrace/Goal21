@@ -11,36 +11,36 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
-        <ImageView 
+        <ImageButton 
         	android:id = "@+id/lv"
         	android:src="@drawable/lv1_a"
         	android:layout_width = "115px"
-        	android:layout_height = "140px"/>
+        	android:layout_height = "140px"
+        	android:clickable="true"/>
         <TextView
         	android:background="@drawable/goal_background"
             android:id="@+id/ItemTitle"
             android:layout_height="140px"   
             android:textSize="20dip"   
             android:layout_width="285px"
-            android:text =" item title" android:gravity="center_vertical" android:paddingLeft="5dp" android:paddingBottom="15dp"/>
-<!--         <ImageView 
-        	android:id = "@+id/list_goal_background"
-        	android:src="@drawable/goal_background"
-        	android:layout_width = "285px"
-        	android:layout_height = "140px"/>
- -->    <ImageButton
+            android:text =" item title" 
+            android:gravity="center_vertical" 
+            android:paddingLeft="5dp" 
+            android:paddingBottom="15dp" 
+            />
+		<ImageButton
         	android:id = "@+id/btn_checkbox"
         	android:src="@drawable/checkbox"
         	android:layout_width="80px"
         	android:layout_height = "140px" android:clickable="true"/>
         
-        
+      <!--   
         
         <TextView 
             android:id="@+id/Current"
             android:layout_height="wrap_content"   
             android:textSize="20dip"   
-            android:layout_width="fill_parent" />
+            android:layout_width="fill_parent" /> -->
 
     </LinearLayout>
 <!-- </RelativeLayout>  -->

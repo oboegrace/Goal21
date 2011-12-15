@@ -32,8 +32,7 @@ public class TestFineActivity extends Activity {
     /** Called when the activity is first created. */       
     Button Btadd;
     Button ActionBarBtn_add;		//action bar, add new goal button
-    ImageButton imagebt;
-    ImageButton check;
+//    ImageButton check;
     CheckBox checkBox1;				//
     TextView ItemTitle;
     public static final String PREF="Directoryhw3";	//what is this?
@@ -57,93 +56,61 @@ public class TestFineActivity extends Activity {
         	@Override
         	public void onChildViewAdded(View parent, View child) {		//Called when a new child is added to a parent view.
         		//Button delbtn = (Button) child.findViewById(R.id.deletebutton);//delete button
-        		//final TextView txtnum = (TextView) child.findViewById(R.id.number);
 
         		  final TextView txtnum = (TextView) child.findViewById(R.id.ItemTitle);	//find view: txtnum list.xml > item title (?) what this for?
-        		  //final TextView Current = (TextView) child.findViewById(R.id.Current);
-                  //imagebt = (ImageButton)child.findViewById(R.id.lv);	//level button: imagebt
-        		  //imagebt = (ImageButton)child.findViewById(R.id.image1);
-                  //checkBox1 = (CheckBox)child.findViewById(R.id.checkBox1);
         		  Log.d("goal","onChildViewAdded");
         		  
-        		  check = (ImageButton)child.findViewById(R.id.btn_checkbox);
-                  //check.setImageDrawable(R.drawable.checkbox);
-                  check.setOnClickListener(new Button.OnClickListener(){
+        		  final ImageButton check = (ImageButton)child.findViewById(R.id.btn_checkbox);
+        		  final ImageButton level = (ImageButton)child.findViewById(R.id.lv);
+        		  level.setOnClickListener( new Button.OnClickListener(){
 
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						//check.setImageDrawable(R.drawable.checkbox_checked);
-						Log.d("goal","checked");
-						//current++
-						//if current == max 
-						//max++
-						//if current == 21
-						//level++
-						//current = 0
+						Log.d("goal","item clicked");
+						//HashMap<String, Object> map2 = (HashMap<String, Object>) list.getItemAtPosition(arg2);
+		        		//HashMap<String, Object> itemAtPosition = (HashMap<String, Object>) list.getItemAtPosition(arg2);
+		        		//  select= itemAtPosition;
+		    
+		        		Intent intent = new Intent();
+		        		intent.setClass(TestFineActivity.this,goal.class);
+		        		Bundle bundle =new Bundle();
+		        		bundle.putString("KEY_Goal", txtnum.getText().toString());
+		        		
+		        		//Integer.toString(Current);
+
+		        		  //Log.d("goal", "1");
+		        		  //bundle.putString("KEY_Current", Integer.toString(Current));
+		        		  //Log.d("KEY_Current"," Current");
+		        		  //Log.d("goal", "2");
+		        		  intent.putExtras(bundle);
+		        		  Log.d("goal", "put bundle");
+		        		  startActivity(intent);
+		        		  //Log.d("goal", "4");
+					}
+        			  
+        			  
+        		  });
+        		  //TODO: check whether it is done, then R.checkbox_checked 
+                  check.setOnClickListener(new Button.OnClickListener(){
+
+					@Override
+					public void onClick(View v) {
+						Log.d("goal","checked"+txtnum.getText().toString());
+						check.setImageResource(R.drawable.checkbox_checked);
+					
+						// TODO:
+							//remember this item (today) is checked
+							//current++
+							//if current == max 
+							//max++
+							//if current == 21
+							//level++
+							//current = 0
 					}
                 	  
                 	  
                   });
-        		  //check.setOnClickListener(new OnClickListener())
-
-                  
-//                  checkBox1.setOnClickListener(new CheckBox.OnClickListener()//�s�W
-//                  {
-//                	  public void onClick(View V)
-//                	{
-//                     
-//                   	  if(checkBox1.isChecked()==true)
-//                   	     { 
-//                   	     
-//                   	 LayoutInflater inflater = LayoutInflater.from(TestFineActivity.this.getBaseContext());  
-//          	        final View textEntryView = inflater.inflate(R.layout.suredialoglayout, null);           	        
-//          	      final AlertDialog.Builder builder = new AlertDialog.Builder(TestFineActivity.this);  
-//      	        builder.setCancelable(false);  
-//      	       // builder.setIcon(R.drawable.icon);  
-//      	        builder.setTitle("你確定你完成了這項工作了嗎?");
-//      	        
-//          	        builder.setPositiveButton("確定",  
-//          	                new DialogInterface.OnClickListener() {  
-//          	                    public void onClick(DialogInterface dialog, int whichButton) { 
-//          	                    	checkBox1.setChecked(true);
-//          	                     
-//          	                     	/*if(checkBox1.isChecked()==true)
-//          	                     	{	
-//          	                     	    Current=Current+1;
-//
-//          	                     	}*/
-//          	                    }
-//          	                  });
-//          	       
-//          	        builder.setNegativeButton("取消",  
-//          	                new DialogInterface.OnClickListener() {  
-//          	                    public void onClick(DialogInterface dialog, int whichButton) {  
-//          	                    	
-//          	                    	checkBox1.setChecked(false);
-//          	                 
-//          	                    	
-//          	                        setTitle("");  
-//          	                     
-//          	                    }  
-//          	                });  
-//          		
-//          		AlertDialog	alertDialog=builder.create();
-//                  alertDialog.show();
-//
-//          	}
-//                	}
-//          	      }); 
-               
-                  
-//                  imagebt.setOnClickListener(new Button.OnClickListener()//�s�W
-//                  {
-//                  	public void onClick(View V)
-//                  	{
-//                  		setTitle("選取了x"+txtnum.getText().toString());
-//                  	}
-//                  });  
-
         	 }
 
 			@Override
@@ -152,9 +119,9 @@ public class TestFineActivity extends Activity {
 				
 			}};
 			
+			
 			list.setOnHierarchyChangeListener(listitemclick );
 		//******* End of List Item Click ********// 
-           // list.setAdapter(adapter);
         
 			//******* Array List: list item ******//
 			final ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();  
@@ -167,8 +134,8 @@ public class TestFineActivity extends Activity {
 				String k1=dataKey.substring(0,9);
 				String k2=dataKey.substring(9);
 				//Btdel.setText(k1);
-				Log.e("xx",k1 ); 
-				Log.e("xx",k2 ); 
+				Log.d("goal",k1 ); 
+				Log.d("goal",k2 ); 
 				if(k1.equals("ItemTitle"))
 				{
 					String titlek=stmap.get(dataKey).toString();
@@ -186,13 +153,14 @@ public class TestFineActivity extends Activity {
                 new int[] {R.id.ItemTitle}  
           );
           list.setAdapter(listItemAdapter); 
-          //list.setOnHierarchyChangeListener(listener)
           
-          //******* Item Click Listener ******//
+          //******* Item on Click Listener ******//
           list.setOnItemClickListener(new OnItemClickListener() {  	 
-        	  @Override  
+        	  @Override
         	  	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {  
-        		//ListView list = (ListView)arg1;
+        		  Log.d("goal","item clicked"+arg2+" "+arg3);
+        		  
+        		  //ListView list = (ListView)arg1;
         		  HashMap<String, Object> map2 = (HashMap<String, Object>) list.getItemAtPosition(arg2);
         		  HashMap<String, Object> itemAtPosition = (HashMap<String, Object>) list.getItemAtPosition(arg2);
         		  select= itemAtPosition;
@@ -203,17 +171,15 @@ public class TestFineActivity extends Activity {
         		  bundle.putString("KEY_Goal", map2.get("ItemTitle").toString());
         		  //Integer.toString(Current);
 
-        		  Log.e("test", "1");
+        		  Log.d("goal", "1");
         		  //bundle.putString("KEY_Current", Integer.toString(Current));
-        		  Log.e("KEY_Current"," Current");
-        		  Log.e("test", "2");
+        		  Log.d("KEY_Current"," Current");
+        		  Log.d("goal", "2");
         		  intent.putExtras(bundle);
-        		  Log.e("test", "3");
+        		  Log.d("goal", "3");
         		  startActivity(intent);
-        		  Log.e("test", "4");
-         	
-             
-        		  setTitle("增加新的目標");
+        		  Log.d("goal", "4");
+
           		}  
           	}
           );      
@@ -258,26 +224,20 @@ public class TestFineActivity extends Activity {
     	                  		  SharedPreferences settings= getSharedPreferences(PREF,0);
     	                		  Editor editor=settings.edit();
     	                          editor.putString("ItemTitle"+edtInput.getText().toString(), edtInput.getText().toString());
-    	                       
-    	                	
-    	                		  editor.commit();
 
-    	                		  //alertDialog.dismiss();
-    	                		  //alertDialog.cancel();
+    	                		  editor.commit();
     	                    	}}  
     	                });  
 
     	        builder.setNegativeButton("Cancel",  
     	                new DialogInterface.OnClickListener() {  
     	                    public void onClick(DialogInterface dialog, int whichButton) {  
-    	                        setTitle("");  
+    	                        
     	                    }  
     	                });  
     		
-    		AlertDialog	alertDialog=builder.create();
-            alertDialog.show();
-
-    		//builder.show(); 
+    	        AlertDialog	alertDialog=builder.create();
+    	        alertDialog.show();
 
     	}
           	}
