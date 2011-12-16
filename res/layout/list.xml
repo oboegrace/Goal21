@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- <RelativeLayout   
+ <RelativeLayout   
     android:id="@+id/RelativeLayout01"   
     android:descendantFocusability="blocksDescendants" 
     xmlns:android="http://schemas.android.com/apk/res/android"   
     android:layout_height="wrap_content" android:background="@drawable/goal_background" android:layout_width="wrap_content">
- -->
+
     <LinearLayout
     	xmlns:android="http://schemas.android.com/apk/res/android" 
         android:id="@+id/linearLayout2"
@@ -43,4 +43,4 @@
             android:layout_width="fill_parent" /> -->
 
     </LinearLayout>
-<!-- </RelativeLayout>  -->
+    </RelativeLayout>

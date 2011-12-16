@@ -50,7 +50,40 @@ public class TestFineActivity extends Activity {
         Btadd=(Button)this.findViewById(R.id.button1);					//find view: btadd
         ActionBarBtn_add=(Button)this.findViewById(R.id.addGoal);		//find view: action bar button
         final ListView list = (ListView) findViewById(R.id.list01); 	//(?) why use 'final'? listview(list01) of main.xml
-        
+      //******* Item on Click Listener ******//
+        list.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+	      		  Log.e("goal","item clicked"+arg2+" "+arg3);
+	      		  
+	      		  //ListView list = (ListView)arg1;
+	      		  HashMap<String, Object> map2 = (HashMap<String, Object>) list.getItemAtPosition(arg2);
+	      		  HashMap<String, Object> itemAtPosition = (HashMap<String, Object>) list.getItemAtPosition(arg2);
+	      		  select= itemAtPosition;
+	  
+	      		  Intent intent = new Intent();
+	      		  intent.setClass(TestFineActivity.this,goal.class);
+	      		  Bundle bundle =new Bundle();
+	      		  bundle.putString("KEY_Goal", map2.get("ItemTitle").toString());
+	      		  //Integer.toString(Current);
+
+	      		  Log.d("goal", "1");
+	      		  //bundle.putString("KEY_Current", Integer.toString(Current));
+	      		  Log.d("KEY_Current"," Current");
+	      		  Log.d("goal", "2");
+	      		  intent.putExtras(bundle);
+	      		  Log.d("goal", "3");
+	      		  startActivity(intent);
+	      		  Log.d("goal", "4");	
+			}
+
+        	
+
+        	}
+        );      
         //******* List Item Click ********//        
         ListView.OnHierarchyChangeListener listitemclick = new ListView.OnHierarchyChangeListener() {//item click listener (listitemclick)
         	@Override
@@ -154,35 +187,7 @@ public class TestFineActivity extends Activity {
           );
           list.setAdapter(listItemAdapter); 
           
-          //******* Item on Click Listener ******//
-          list.setOnItemClickListener(new OnItemClickListener() {  	 
-        	  @Override
-        	  	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {  
-        		  Log.d("goal","item clicked"+arg2+" "+arg3);
-        		  
-        		  //ListView list = (ListView)arg1;
-        		  HashMap<String, Object> map2 = (HashMap<String, Object>) list.getItemAtPosition(arg2);
-        		  HashMap<String, Object> itemAtPosition = (HashMap<String, Object>) list.getItemAtPosition(arg2);
-        		  select= itemAtPosition;
-    
-        		  Intent intent = new Intent();
-        		  intent.setClass(TestFineActivity.this,goal.class);
-        		  Bundle bundle =new Bundle();
-        		  bundle.putString("KEY_Goal", map2.get("ItemTitle").toString());
-        		  //Integer.toString(Current);
-
-        		  Log.d("goal", "1");
-        		  //bundle.putString("KEY_Current", Integer.toString(Current));
-        		  Log.d("KEY_Current"," Current");
-        		  Log.d("goal", "2");
-        		  intent.putExtras(bundle);
-        		  Log.d("goal", "3");
-        		  startActivity(intent);
-        		  Log.d("goal", "4");
-
-          		}  
-          	}
-          );      
+          
     
           
           
@@ -199,7 +204,7 @@ public class TestFineActivity extends Activity {
     	        final AlertDialog.Builder builder = new AlertDialog.Builder(TestFineActivity.this);  
     	        builder.setCancelable(false);  
     	       // builder.setIcon(R.drawable.icon);  
-    	        builder.setTitle("增加新的目標");  
+    	        builder.setTitle("憓��啁��格�");  
     	        builder.setView(textEntryView); 
     	        
     	        //**** OK clicked ****///
@@ -211,7 +216,7 @@ public class TestFineActivity extends Activity {
     	                    	
     	                    	if(edtInputName.equals(""))
     	                		{        	            			
-    	                			Toast.makeText(TestFineActivity.this, "你確定你完成了這項工作了嗎?", Toast.LENGTH_SHORT).show();
+    	                			Toast.makeText(TestFineActivity.this, "雿Ⅱ摰�摰�鈭��極雿���", Toast.LENGTH_SHORT).show();
     	                  		}
     	                    	        	                		        	            			        	                		       	                  		
     	                    	else{
