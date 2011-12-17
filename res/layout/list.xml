@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
- <RelativeLayout   
+<!--  <RelativeLayout   
     android:id="@+id/RelativeLayout01"   
     android:descendantFocusability="blocksDescendants" 
     xmlns:android="http://schemas.android.com/apk/res/android"   
-    android:layout_height="wrap_content" android:background="@drawable/goal_background" android:layout_width="wrap_content">
+    android:layout_height="wrap_content" android:background="@drawable/goal_background" android:layout_width="wrap_content"> -->
 
     <LinearLayout
     	xmlns:android="http://schemas.android.com/apk/res/android" 
@@ -16,7 +16,9 @@
         	android:src="@drawable/lv1_a"
         	android:layout_width = "115px"
         	android:layout_height = "140px"
-        	android:clickable="true"/>
+        	android:clickable="true"
+        	android:background="#00000000"/>
+        
         <TextView
         	android:background="@drawable/goal_background"
             android:id="@+id/ItemTitle"
@@ -32,7 +34,9 @@
         	android:id = "@+id/btn_checkbox"
         	android:src="@drawable/checkbox"
         	android:layout_width="80px"
-        	android:layout_height = "140px" android:clickable="true"/>
+        	android:layout_height = "140px" 
+        	android:clickable="true"
+        	android:background="#00000000"/>
         
       <!--   
         
@@ -43,4 +47,4 @@
             android:layout_width="fill_parent" /> -->
 
     </LinearLayout>
-    </RelativeLayout>
+<!--     </RelativeLayout> -->

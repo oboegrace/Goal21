@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -95,6 +96,8 @@ public class TestFineActivity extends Activity {
         		  
         		  final ImageButton check = (ImageButton)child.findViewById(R.id.btn_checkbox);
         		  final ImageButton level = (ImageButton)child.findViewById(R.id.lv);
+        		  
+        		  //按下level後跳到下一頁
         		  level.setOnClickListener( new Button.OnClickListener(){
 
 					@Override
@@ -124,6 +127,23 @@ public class TestFineActivity extends Activity {
         			  
         			  
         		  });
+        		  
+        		  //按下list中間的textView也要跳到下一頁
+        		  txtnum.setOnClickListener(new OnClickListener() {
+  					
+  					public void onClick(View v) {
+  						// TODO Auto-generated method stub
+  						Intent intent = new Intent();
+  		        		intent.setClass(TestFineActivity.this,goal.class);
+  		        		Bundle bundle =new Bundle();
+  		        		bundle.putString("KEY_Goal", txtnum.getText().toString());
+  		        		intent.putExtras(bundle);
+  		        	   // Log.d("goal", "put bundle");
+  		        		startActivity(intent);
+  						
+  					}
+  				});
+        		  
         		  //TODO: check whether it is done, then R.checkbox_checked 
                   check.setOnClickListener(new Button.OnClickListener(){
 
@@ -144,6 +164,10 @@ public class TestFineActivity extends Activity {
                 	  
                 	  
                   });
+                  
+                  
+                  
+                  
         	 }
 
 			@Override

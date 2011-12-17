@@ -4,26 +4,49 @@
   	android:weightSum="1" 
   	android:layout_width="match_parent" 
   	android:orientation="vertical" 
-  	android:layout_height="match_parent">
+  	android:layout_height="match_parent"
+  	>
+  	<RelativeLayout android:layout_height="wrap_content" android:background="@drawable/medium"
+		android:id="@+id/relativeLayout1" android:layout_width="fill_parent">
+			<ImageView android:src="@drawable/title_list"
+				android:id="@+id/imageView1" android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				></ImageView>
+			<Button android:layout_width="wrap_content"
+				android:background="@drawable/actionbar_selector_delete"
+				android:layout_height="wrap_content" 
+				android:id="@+id/deleteGoal"
+				android:layout_alignParentRight="true"
+				></Button>
+				</RelativeLayout> 	
   	<LinearLayout 
   		android:orientation="horizontal"
   		android:layout_width = "fill_parent"
   		android:layout_height="150px">
-  		<ImageButton
+  		<!-- <ImageButton
         	android:id = "@+id/arrow_prev"
         	android:src="@drawable/arrow_prev"
         	android:layout_width="80px"
-        	android:layout_height = "150px"/>
+        	android:layout_height = "150px"
+        	android:background="#00000000"/> -->
+        <ImageButton
+        	android:id = "@+id/arrow_prev"
+        	android:src="@drawable/arrow_prev"
+        	android:layout_width="wrap_content"
+        	android:layout_height = "wrap_content"
+        	android:background="#00000000"/>
         <ImageView 
         	android:id = "@+id/detail_lv"
         	android:src="@drawable/details_lv1_a"
-        	android:layout_width = "320px"
-        	android:layout_height = "150px"/>
+        	android:layout_width = "wrap_content"
+        	android:layout_height = "wrap_content"
+        	android:background="#00000000"/>
         <ImageButton
         	android:id = "@+id/arrow_next"
         	android:src="@drawable/arrow_next"
-        	android:layout_width="80px"
-        	android:layout_height = "150px" />
+        	android:layout_width="wrap_content"
+        	android:layout_height = "wrap_content"
+        	android:background="#00000000"/>
   	</LinearLayout>
    	<!--  <TextView android:id="@+id/textView1" 
     	android:text="TextView" 
@@ -37,7 +60,7 @@
     	android:weightSum="1"
     	android:orientation="vertical" 
     	android:background="@drawable/detailes_background" 
-    	android:layout_width="480px">
+    	android:layout_width="fill_parent">
     	
     	<TextView android:id ="@+id/detail_goal_name"
     		android:layout_width = "fill_parent"

@@ -12,7 +12,7 @@
 				android:layout_width="wrap_content"
 				></ImageView>
 			<Button android:layout_width="wrap_content"
-				android:background="@drawable/actionbar_selector"
+				android:background="@drawable/actionbar_selector_add"
 				android:layout_height="wrap_content" 
 				android:id="@+id/addGoal"
 				android:layout_alignParentRight="true"
