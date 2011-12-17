@@ -40,7 +40,7 @@ public class goal extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				// TODO 實作刪除的部份
 				Toast.makeText(goal.this, "垃圾桶被按了", Toast.LENGTH_SHORT).show();
 			}
 		});
