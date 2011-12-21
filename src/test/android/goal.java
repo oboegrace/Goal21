@@ -15,18 +15,15 @@ import android.widget.Toast;
 
 public class goal extends Activity {
 	Button btn_sos;
-	TextView goal_name;//Penguin
-	public String ngoal;//Penguin
-	//public String ncurrrent;//Penguin
-	//Action bar的delete Button
+	TextView goal_name;
+	public String ngoal;
+
 	private Button ActionBar_delete_button;
 	
 	public void onCreate(Bundle savedInstanceState) {
-		Log.d("goal","Goal on create!!");
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.goal);
-        Log.d("goal","find layout");
         
         //findView
         btn_sos=(Button)findViewById(R.id.button1);	//sos
@@ -42,6 +39,11 @@ public class goal extends Activity {
 			public void onClick(View v) {
 				// TODO 實作刪除的部份
 				Toast.makeText(goal.this, "垃圾桶被按了", Toast.LENGTH_SHORT).show();
+				// test fine activity callForResult
+				// 這邊回傳的時候加上goal# & goal name, testfineactivity再做delete goal的動作
+				//setResult(RESULT_OK, 
+				// 彈出視窗詢問是否真的要刪掉此目標？資料記錄將無法恢復
+				//finished();
 			}
 		});
         
@@ -54,6 +56,7 @@ public class goal extends Activity {
 //        	Intent intent = new Intent();
 //        	intent.setClass(goal.this,TestFineActivity.class);
 //        	startActivity(intent);
+        		
 //        		
         	}
         	       	

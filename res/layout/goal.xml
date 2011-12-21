@@ -60,7 +60,7 @@
     	android:weightSum="1"
     	android:orientation="vertical" 
     	android:background="@drawable/detailes_background" 
-    	android:layout_width="fill_parent">
+    	android:layout_width="wrap_content">
     	
     	<TextView android:id ="@+id/detail_goal_name"
     		android:layout_width = "fill_parent"
@@ -69,14 +69,17 @@
     		android:paddingBottom="20dp" 
     		android:paddingLeft="20dp" 
     		android:paddingRight="20dp" 
-    		android:paddingTop="60dp" android:layout_height="100dp" android:textSize="20dp"/>
+    		android:paddingTop="60dp" 
+    		android:textColor="#666666"
+    		android:layout_height="100dp" 
+    		android:textSize="20dp"/>
     	
     	<TextView android:id ="@+id/detail_goal_current"
     		android:layout_width = "fill_parent"
     		android:text="21" 
     		android:gravity="bottom|right" 
     		android:layout_height="110dp"
-
+			android:textColor="#ffffffff"
     		android:textSize="30dp"
     		android:paddingRight="75dp"/>
     	<TextView android:id = "@+id/detail_goal_max"
@@ -86,6 +89,7 @@
     		android:layout_height = "25dp"
     		android:textSize = "15dp"
     		android:paddingBottom="5dp"
+    		android:textColor="#ffffffff"
     		android:paddingRight="75dp"/>
     	<TextView android:id = "@+id/detail_goal_start"
     		android:layout_width = "fill_parent"
@@ -93,6 +97,7 @@
     		android:gravity="bottom|right"
     		android:layout_height = "25dp"
     		android:textSize = "15dp"
+    		android:textColor="#ffffffff"
     		android:paddingBottom="5dp"
     		android:paddingRight="40dp"/>
     	<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout2">

@@ -30,40 +30,43 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class TestFineActivity extends Activity {
-    /** Called when the activity is first created. */       
+    /** Called when the activity is first created. */   
+	//**** view Container ****//
     Button Btadd;
     Button ActionBarBtn_add;		//action bar, add new goal button
-//    ImageButton check;
+    //    ImageButton check;
     CheckBox checkBox1;				//
     TextView ItemTitle;
-    public static final String PREF="Directoryhw3";	//what is this?
-//TextView Current;
-//int Current =0;
+    public static final String PREF="GoalList";
+    //TextView Current;
+    //int Current =0;
     
     HashMap<String, Object> select=new HashMap<String, Object>();	//array list: select
-    
+    private static final int EDIT=1;	//for startActivityForResult
+    //**** On Create ****//
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);		//is this for self define title bar?
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);		//for self define title bar?
         setContentView(R.layout.main);							//set content view: main.xml
         
+        //**** find view ****//
         Btadd=(Button)this.findViewById(R.id.button1);					//find view: btadd
         ActionBarBtn_add=(Button)this.findViewById(R.id.addGoal);		//find view: action bar button
         final ListView list = (ListView) findViewById(R.id.list01); 	//(?) why use 'final'? listview(list01) of main.xml
-      //******* Item on Click Listener ******//
+        //******* Item on Click Listener ******//
         list.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				// TODO Auto-generated method stub
-	      		  Log.e("goal","item clicked"+arg2+" "+arg3);
+	      		  Log.d("goal","item clicked (arg2):"+arg2+" (arg3):"+arg3);
 	      		  
 	      		  //ListView list = (ListView)arg1;
+	      		  //* get item Position *//
 	      		  HashMap<String, Object> map2 = (HashMap<String, Object>) list.getItemAtPosition(arg2);
 	      		  HashMap<String, Object> itemAtPosition = (HashMap<String, Object>) list.getItemAtPosition(arg2);
-	      		  select= itemAtPosition;
+	      		  select = itemAtPosition;
 	  
 	      		  Intent intent = new Intent();
 	      		  intent.setClass(TestFineActivity.this,goal.class);
@@ -71,12 +74,13 @@ public class TestFineActivity extends Activity {
 	      		  bundle.putString("KEY_Goal", map2.get("ItemTitle").toString());
 	      		  //Integer.toString(Current);
 
-	      		  Log.d("goal", "1");
+	      		  //Log.d("goal", "1");
 	      		  //bundle.putString("KEY_Current", Integer.toString(Current));
-	      		  Log.d("KEY_Current"," Current");
-	      		  Log.d("goal", "2");
+	      		  //Log.d("goal"," Current");
+	      		  //Log.d("goal", "2");
 	      		  intent.putExtras(bundle);
 	      		  Log.d("goal", "3");
+	      		  //startActivityForResult(intent, EDIT);
 	      		  startActivity(intent);
 	      		  Log.d("goal", "4");	
 			}
@@ -228,7 +232,7 @@ public class TestFineActivity extends Activity {
     	        final AlertDialog.Builder builder = new AlertDialog.Builder(TestFineActivity.this);  
     	        builder.setCancelable(false);  
     	       // builder.setIcon(R.drawable.icon);  
-    	        builder.setTitle("憓��啁��格�");  
+    	        builder.setTitle("新增目標");  
     	        builder.setView(textEntryView); 
     	        
     	        //**** OK clicked ****///
@@ -240,7 +244,7 @@ public class TestFineActivity extends Activity {
     	                    	
     	                    	if(edtInputName.equals(""))
     	                		{        	            			
-    	                			Toast.makeText(TestFineActivity.this, "雿Ⅱ摰�摰�鈭��極雿���", Toast.LENGTH_SHORT).show();
+    	                			Toast.makeText(TestFineActivity.this, "未輸入目標名稱", Toast.LENGTH_SHORT).show();
     	                  		}
     	                    	        	                		        	            			        	                		       	                  		
     	                    	else{
