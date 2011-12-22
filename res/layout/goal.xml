@@ -2,9 +2,9 @@
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"  
   	android:weightSum="1" 
-  	android:layout_width="match_parent" 
+  	android:layout_width="fill_parent" 
   	android:orientation="vertical" 
-  	android:layout_height="match_parent"
+  	android:layout_height="fill_parent"
   	>
   	<RelativeLayout android:layout_height="wrap_content" android:background="@drawable/medium"
 		android:id="@+id/relativeLayout1" android:layout_width="fill_parent">
@@ -84,7 +84,7 @@
     		android:paddingRight="75dp"/>
     	<TextView android:id = "@+id/detail_goal_max"
     		android:layout_width = "fill_parent"
-    		android:text = "0"
+    		android:text = "40"
     		android:gravity="bottom|right"
     		android:layout_height = "25dp"
     		android:textSize = "15dp"
@@ -93,16 +93,20 @@
     		android:paddingRight="75dp"/>
     	<TextView android:id = "@+id/detail_goal_start"
     		android:layout_width = "fill_parent"
-    		android:text = "2011/12/14"
+    		android:text = "2011/12/21"
     		android:gravity="bottom|right"
     		android:layout_height = "25dp"
     		android:textSize = "15dp"
     		android:textColor="#ffffffff"
     		android:paddingBottom="5dp"
     		android:paddingRight="40dp"/>
-    	<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout2">
+    	<LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout2">
     		<!-- <ImageButton android:src="@drawable/" android:id="@+id/imageButton1" android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageButton> -->
-    		<Button android:layout_width="wrap_content" android:text="Button" android:layout_height="wrap_content" android:id="@+id/button1"></Button>
+    		<ImageButton android:layout_width="wrap_content" 
+    		        android:text="Button" 
+    		        android:layout_height="wrap_content" 
+    		        android:id="@+id/button_sos"
+    		        android:src="@drawable/sos_selector"/>
     	</LinearLayout>	
     	
     		
