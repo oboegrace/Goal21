@@ -1,6 +1,8 @@
 ﻿package test.android;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import android.app.Activity;
@@ -147,6 +149,7 @@ public class TestFineActivity extends Activity {
   		                bundle.putString("KEY_Goal_Max", map2.get("ItemMax").toString());
 		        	    bundle.putString("KEY_Goal_Current", map2.get("ItemCurrent").toString());
 		        	    bundle.putString("KEY_Goal_Level", map2.get("ItemLevel").toString());
+		        	    bundle.putString("KEY_Goal_Start", map2.get("ItemStart").toString());
   		        		intent.putExtras(bundle);
   		        	   // Log.d("goal", "put bundle");
   		        		startActivityForResult(intent,2);
@@ -256,6 +259,7 @@ public class TestFineActivity extends Activity {
 				    String goalcurrent = stmap.get("ItemCurrent"+k2).toString();
 				    String goallevel = stmap.get("ItemLevel"+k2).toString(); 
 				    String goalcheck = stmap.get("ItemCheck"+k2).toString();
+				    String goalstart = stmap.get("ItemStart"+k2).toString();
 
 					HashMap<String, Object> map = new HashMap<String, Object>();  
 					map.put("ItemTitle", titlek);  
@@ -263,6 +267,7 @@ public class TestFineActivity extends Activity {
 					map.put("ItemCurrent",goalcurrent);
 					map.put("ItemLevel",goallevel);
 					map.put("ItemCheck",goalcheck);
+					map.put("ItemStart",goalstart);
 					
 					listItem.add(map); 	
 				}
@@ -275,7 +280,11 @@ public class TestFineActivity extends Activity {
           );
           listItemAdapter1=listItemAdapter;
           list.setAdapter(listItemAdapter); 
-
+          
+          
+    
+          
+          
           //****** ACTION BAR: ADD NEW ITEM ******//
           ActionBarBtn_add.setOnClickListener(new Button.OnClickListener(){
         	  
@@ -305,12 +314,21 @@ public class TestFineActivity extends Activity {
     	                  		}
     	                    	        	                		        	            			        	                		       	                  		
     	                    	else{
+    	                          
+    	                    	  long timeNow = System.currentTimeMillis(); 
+    	                    	  Calendar calendar = Calendar.getInstance();
+    	                    	  calendar.setTimeInMillis(timeNow);
+    	                    	  SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+    	                    	  String startday = df.format(calendar.getTime());
+    	                    	 //tv4.setText("DATE="+bf);
+    	                    	  
     	                    	  HashMap<String, Object> map = new HashMap<String, Object>();  
     	                          map.put("ItemTitle", edtInput.getText() );
     	                          map.put("ItemMax", 0 );
     	                          map.put("ItemCurrent", 0 );
     	                          map.put("ItemLevel", 0 );
     	                          map.put("ItemCheck", 0 );
+    	                          map.put("ItemStart", startday);
     	                                              
     	                         // map.put("Current", 0 );  
     	                          listItem.add(map); 
@@ -324,6 +342,7 @@ public class TestFineActivity extends Activity {
     	                          editor.putInt("ItemCurrent"+edtInput.getText().toString(), 0);
     	                          editor.putInt("ItemLevel"+edtInput.getText().toString(), 0);
     	                          editor.putInt("ItemCheck"+edtInput.getText().toString(), 0);
+    	                          editor.putString("ItemStart"+edtInput.getText().toString(), startday);
     	                		  editor.commit();
     	                    	}}  
     	                });  
@@ -373,8 +392,8 @@ public class TestFineActivity extends Activity {
     		editor.remove("ItemMax"+select.get("ItemTitle"));
     		editor.remove("ItemLevel"+select.get("ItemTitle"));
     		editor.remove("ItemCheck"+select.get("ItemTitle"));
-    		editor.remove("ItemTitle"+select.get("ItemTitle"));
-    		//editor.remove("ItemText"+select.get("ItemText"));
+    		editor.remove("ItemStart"+select.get("ItemTitle"));
+    		editor.remove("ItemTitle"+select.get("ItemTitle"));   		
             editor.commit();
     		}
         }

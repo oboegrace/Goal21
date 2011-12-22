@@ -22,9 +22,9 @@ import android.widget.Toast;
 
 public class goal extends Activity {
 	ImageButton btn_sos;
-	TextView goal_name, goal_max, goal_current, goal_level;
+	TextView goal_name, goal_max, goal_current, goal_level, goal_start;
 	public String ngoal;
-	String goal, max, current, level;
+	String goal, max, current, level, start;
 
  
 	private Button ActionBar_delete_button;
@@ -39,6 +39,7 @@ public class goal extends Activity {
         goal_name=(TextView)findViewById(R.id.detail_goal_name);//Penguin
         goal_max = (TextView)findViewById(R.id.detail_goal_max);
         goal_current = (TextView)findViewById(R.id.detail_goal_current);
+        goal_start = (TextView)findViewById(R.id.detail_goal_start);
         ActionBar_delete_button = (Button)findViewById(R.id.deleteGoal);
         
         showResults(savedInstanceState);////Penguin
@@ -116,12 +117,14 @@ public class goal extends Activity {
 	    max = bundle.getString("KEY_Goal_Max");
 	    current = bundle.getString("KEY_Goal_Current");
         level = bundle.getString("KEY_Goal_Level");
+        start= bundle.getString("KEY_Goal_Start");
 		Log.d("goal", goal);
 		//String currrent=bundle.getString("KEY_currrent");
 		
 		goal_name.setText(goal);
 	    goal_max.setText(max);
 	    goal_current.setText(current);
+	    goal_start.setText(start);
 		//textView6.setText(currrent);
 		//ngoal=bundle.getString("KEY_Goal");
 		//ncurrrent=bundle.getString("KEY_currrent");
