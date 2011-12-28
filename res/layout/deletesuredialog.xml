@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"     
    android:layout_height="wrap_content"  
     android:orientation="vertical">
-
+
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="fill_parent"
@@ -11,12 +11,9 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/textViewSure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dip"
-            android:layout_weight="2.04"
-            android:text="確定完成今天的工作了嗎?\n一旦勾選就不能反悔囉!!" />
+            android:id="@+id/textView5" android:layout_marginLeft="10dip"
+            android:layout_width="207dp" android:layout_height="76dp" android:text="是否確定要刪除目標?"/>
+
     </LinearLayout>
   
 </LinearLayout> 

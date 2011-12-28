@@ -100,11 +100,12 @@
     		android:textColor="#ffffffff"
     		android:paddingBottom="5dp"
     		android:paddingRight="40dp"/>
-    	<LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout2">
+    	<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/linearLayout2">
     		<!-- <ImageButton android:src="@drawable/" android:id="@+id/imageButton1" android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageButton> -->
-    		<ImageButton android:layout_width="wrap_content" 
-    		        android:text="Button" 
-    		        android:layout_height="wrap_content" 
+    		<ImageButton android:layout_width="120dp" 
+    		        android:text="SOS!" 
+    		        android:layout_marginLeft="100dip"
+    		        android:layout_height="55dp" 
     		        android:id="@+id/button_sos"
     		        android:src="@drawable/sos_selector"/>
     	</LinearLayout>	
