@@ -84,13 +84,11 @@ public class TestFineActivity extends Activity {
         {
         	FakeData();
         	fake = true;
-        }
-        
-        
-        mHandler = new Handler();      
+        } 
+        mHandler = new Handler();
         mRunable = new Runnable(){
-            //檢查與上次打勾的時間相差幾天，超過一天就將check狀態更新為未打勾
-        	@Override
+        //檢查與上次打勾的時間相差幾天，超過一天就將check狀態更新為未打勾
+        @Override
         public void run() {
             	
             	//抓現在的日期存到變數now
@@ -188,7 +186,7 @@ public class TestFineActivity extends Activity {
        
         //**** find view ****//
         ActionBarBtn_add=(Button)this.findViewById(R.id.addGoal);		//find view: action bar button
-        list = (ListView) findViewById(R.id.list01); 	//(?) why use 'final'? listview(list01) of main.xml
+        list = (ListView) findViewById(R.id.list01); 	
         
         //******* Item on Click Listener ******//
         list.setOnItemClickListener(new OnItemClickListener() {
@@ -318,56 +316,28 @@ public class TestFineActivity extends Activity {
 		     		        		    Integer current1 = (Integer) stmap4.get("ItemCurrent"+txtnum.getText().toString());
 		     		        			Log.d("check_Max", "readok");
 		     		        		    
-		     		        			current1++;
+		     		        			current1++;//update progress bar
 		     		        			   
-		     		        			if((level1*21 + current1) > max1)
+		     		        			if( (level1*21 + current1) > max1)
 		     		        			{ 
-		     		        				  max1 ++;
+		     		        				  max1 ++;//update max date
 		     		        			 }
 		     		        		
 		     		        			if(current1 == 21)
 		     		        			{
 		     		        				    level1 ++;
 		     		        			 	    current1 = level1*21;
+		     		        			 	    level.setImageResource(R.drawable.lv3);
+//		     		        			 	    level.setImageResource(R.drawable);
 		     		        			 	    
-		     		        			 	    
-		     		        	               
-		     		        	                if( !mFacebook.isSessionValid())
-		     		        	      	        {      			
-		     		        	         			mFacebook.authorize(TestFineActivity.this, new String[] {"publish_stream","read_stream"}, new DialogListener() {
-		     		        	      						@Override
-		     		        	      						public void onComplete(Bundle values) {
-		     		        	      							// TODO Auto-generated method stub
-		     		        	      							SessionStore.save(mFacebook, getApplicationContext());
-		     		        	      						}
-
-		     		        	      						@Override
-		     		        	      						public void onFacebookError(FacebookError e) {
-		     		        	      							// TODO Auto-generated method stub
-		     		        	      							
-		     		        	      						}
-
-		     		        	      						@Override
-		     		        	      						public void onError(DialogError e) {
-		     		        	      							// TODO Auto-generated method stub
-		     		        	      							
-		     		        	      						}
-
-		     		        	      						@Override
-		     		        	      						public void onCancel() {
-		     		        	      							// TODO Auto-generated method stub
-		     		        	      							
-		     		        	      						}});    		        	     	        
-		     		        	      	       }
-		     		        	      	       
-		     		        	      	       mAsyncRunner.request("me", new IDRequestListener());
-		     		        	             
+		     		        	              
+		     		        			 	    //alert dialog
 		     		        	       	    	LayoutInflater inflaterPost = LayoutInflater.from(TestFineActivity.this.getBaseContext());  		        	        
 		     		        	   		        final View PostTextEntryView = inflaterPost.inflate(R.layout.postdialog, null);  			//textEntryView: dialog layout		        	        
 		     		        	   	            final AlertDialog.Builder PostBuilder = new AlertDialog.Builder(TestFineActivity.this);  
-		     		        	   	            final EditText edtInput = (EditText)PostTextEntryView.findViewById(R.id.sos_post);
-		     		        	   	            TextView textpost = (TextView)PostTextEntryView.findViewById(R.id.textViewPostSure);
-		     		        	   	            EditText sostextpost = (EditText)PostTextEntryView.findViewById(R.id.sos_post);
+		     		        	   	            final EditText edtInput = (EditText)PostTextEntryView.findViewById(R.id.level_up_post);
+		     		        	   	            TextView textpost = (TextView)PostTextEntryView.findViewById(R.id.textViewPostSure);//description text
+		     		        	   	            EditText sostextpost = (EditText)PostTextEntryView.findViewById(R.id.level_up_post);
 		     		          	            
 		     		          	                sostextpost.setText("我又持續執行我的目標21天了!!");
 		     		        	   	            textpost.setText("Level up!! 快PO到Facebook上與朋友們分享!!");
@@ -381,6 +351,31 @@ public class TestFineActivity extends Activity {
 		     		        	   	                 public void onClick(DialogInterface dialog, int whichButton) { 
 		     		        	   	                			     		        	   	        	        
 		     		        	   	                	Log.d("sos", "postclick");	  	            		
+		     		        	   	                //level up: put on wall post//
+		     		        	   	                	if( !mFacebook.isSessionValid())
+		     		        	   	                	{      			
+		     		        	   	                		mFacebook.authorize(TestFineActivity.this, new String[] {"publish_stream","read_stream"}, new DialogListener() {
+		     		        	   	                			@Override
+		     		        	   	                		    public void onComplete(Bundle values) {
+		     		        	   	                		     	// TODO Auto-generated method stub
+		     		        	   	                		     	SessionStore.save(mFacebook, getApplicationContext());
+		     		        	   	                		    }
+		     		        	   	                			@Override
+		     		        	   	                			public void onFacebookError(FacebookError e) {
+		     		        	   	                			}
+		     		        	   	                			@Override
+		     		        	   	                			public void onError(DialogError e) {
+		     		        	   	                				
+		     		        	   	                			}
+		     		        	   	                			@Override
+		     		        	   	                		    public void onCancel() {
+		     		        	   	                				
+		     		        	   	                			}
+		     		        	   	                			}
+		     		        	   	                		);    		        	     	        
+		     		        	   	                	}
+		     		        	   	                	mAsyncRunner.request("me", new IDRequestListener());
+		     		        	   	                	
 		     		        	   	                	Bundle Postb = new Bundle();
 		     		        	   	                	Postb.putString("method", "POST");
 		     		        	   	                	Log.d("level_bundle_mothod", "ok"); 
@@ -454,12 +449,18 @@ public class TestFineActivity extends Activity {
       			SharedPreferences settings2= getSharedPreferences(PREF,0);
     			Map<String,?>stmap2 = settings2.getAll();
     			Integer checked = (Integer) stmap2.get("ItemCheck"+txtnum.getText().toString());
+    			Integer level_num = (Integer) stmap2.get("ItemLevel"+txtnum.getText().toString());
+    			level_num++;
+    			Integer progress = (Integer) stmap2.get("ItemCurrent"+txtnum.getText().toString());
+    			//String level_str = "R.drawable.lv"+level_num.toString();
+    			
     			Log.d("checkedtry",stmap2.get("ItemCheck"+txtnum.getText().toString()).toString());
     			
     			if(checked == 1)
                 {
                   check.setImageResource(R.drawable.checkbox_checked);
                   check.setClickable(false);
+                  
                   
                   Log.d("check=1_setclick", "ok"); 
                 }
@@ -470,7 +471,98 @@ public class TestFineActivity extends Activity {
     				check.setClickable(true);
     				Log.d("check=0_setclick", "ok"); 
     			}
-                }
+    			
+    			switch(level_num){
+    			case 0:
+    				level.setImageResource(R.drawable.lv1);
+    				break;
+    			case 2:
+    				level.setImageResource(R.drawable.lv2);
+    				break;
+    			case 3:
+    				level.setImageResource(R.drawable.lv3);
+    				break;
+    			case 4:
+    				level.setImageResource(R.drawable.lv4);
+    				break;
+    			case 5:
+    				level.setImageResource(R.drawable.lv5);
+    				break;
+    			case 6:
+    				level.setImageResource(R.drawable.lv6);
+    				break;
+    			default:
+    				level.setImageResource(R.drawable.lv1);
+    			}
+    			switch(progress){
+    			case 0:
+    				txtnum.setBackgroundResource(R.drawable.goal_background);
+    				break;
+    			case 1:
+    				txtnum.setBackgroundResource(R.drawable.goal_background1);
+    				break;
+    			case 2:
+    				txtnum.setBackgroundResource(R.drawable.goal_background2);
+    				break;
+    			case 3:
+    				txtnum.setBackgroundResource(R.drawable.goal_background2);
+    				break;
+    			case 4:
+    				txtnum.setBackgroundResource(R.drawable.goal_background4);
+    				break;
+    			case 5:
+    				txtnum.setBackgroundResource(R.drawable.goal_background5);
+    				break;
+    			case 6:
+    				txtnum.setBackgroundResource(R.drawable.goal_background6);
+    				break;
+    			case 7:
+    				txtnum.setBackgroundResource(R.drawable.goal_background7);
+    				break;
+    			case 8:
+    				txtnum.setBackgroundResource(R.drawable.goal_background8);
+    				break;
+    			case 9:
+    				txtnum.setBackgroundResource(R.drawable.goal_background9);
+    				break;
+    			case 10:
+    				txtnum.setBackgroundResource(R.drawable.goal_background10);
+    				break;
+    			case 11:
+    				txtnum.setBackgroundResource(R.drawable.goal_background11);
+    				break;
+    			case 12:
+    				txtnum.setBackgroundResource(R.drawable.goal_background12);
+    				break;
+    			case 13:
+    				txtnum.setBackgroundResource(R.drawable.goal_background13);
+    				break;
+    			case 14:
+    				txtnum.setBackgroundResource(R.drawable.goal_background14);
+    				break;
+    			case 15:
+    				txtnum.setBackgroundResource(R.drawable.goal_background15);
+    				break;
+    			case 16:
+    				txtnum.setBackgroundResource(R.drawable.goal_background16);
+    				break;
+    			case 17:
+    				txtnum.setBackgroundResource(R.drawable.goal_background17);
+    				break;
+    			case 18:
+    				txtnum.setBackgroundResource(R.drawable.goal_background18);
+    				break;
+    			case 19:
+    				txtnum.setBackgroundResource(R.drawable.goal_background19);
+    				break;
+    			case 20:
+    				txtnum.setBackgroundResource(R.drawable.goal_background20);
+    				break;
+    			default:
+    				txtnum.setBackgroundResource(R.drawable.goal_background);
+    			}
+    			
+            }
 
 			@Override
 			public void onChildViewRemoved(View arg0, View arg1) {			//REMOVE list item...
@@ -498,13 +590,15 @@ public class TestFineActivity extends Activity {
 					String titlek = stmap.get(dataKey).toString();
 				    String goalmax = stmap.get("ItemMax"+k2).toString();
 				    String goalcurrent = stmap.get("ItemCurrent"+k2).toString();
-				    String goallevel = stmap.get("ItemLevel"+k2).toString(); 
+				    String goallevel = stmap.get("ItemLevel"+k2).toString(); //set level image
+				    Log.d("goal","502: goalLevel = "+goallevel);
+				    //level.setImageResource(R.drawable.)
 				    String goalcheck = stmap.get("ItemCheck"+k2).toString();
 				    String goalstart = stmap.get("ItemStart"+k2).toString();
 				    String goallast = stmap.get("ItemLast"+k2).toString();
-
+				    
 					HashMap<String, Object> map = new HashMap<String, Object>();  
-					map.put("ItemTitle", titlek);  
+					map.put("ItemTitle", titlek); 
 					map.put("ItemMax",goalmax);
 					map.put("ItemCurrent",goalcurrent);
 					map.put("ItemLevel",goallevel);
@@ -623,11 +717,13 @@ public class TestFineActivity extends Activity {
 				String titlek = stmap.get(dataKey).toString();
 			    String goalmax = stmap.get("ItemMax"+k2).toString();
 			    String goalcurrent = stmap.get("ItemCurrent"+k2).toString();
-			    String goallevel = stmap.get("ItemLevel"+k2).toString(); 
+			    String goallevel = stmap.get("ItemLevel"+k2).toString(); //level image
+			    Log.d("goal","429: goalLevel = "+goallevel);
+			    
 			    String goalcheck = stmap.get("ItemCheck"+k2).toString();
 			    String goalstart = stmap.get("ItemStart"+k2).toString();
 			    String goallast = stmap.get("ItemLast"+k2).toString();
-
+			    
 				HashMap<String, Object> map = new HashMap<String, Object>();  
 				map.put("ItemTitle", titlek);  
 				map.put("ItemMax",goalmax);
@@ -726,8 +822,8 @@ public class TestFineActivity extends Activity {
     {
     	String data1, data2, data3;
     	data1 = "12點前睡覺";
-    	data2 = "每天吃一顆蘋果";
-    	data3 = "寫五個小時的code";
+    	data2 = "每天吃一份水果";
+    	data3 = "寫code 4個小時以上";
     	
         String startday1 = "2011-11-29";
         String startday2 = "2011-12-13";
@@ -743,7 +839,7 @@ public class TestFineActivity extends Activity {
         editorfake.putInt("ItemLevel"+data1, 0);
         editorfake.putInt("ItemCheck"+data1, 0);
         editorfake.putString("ItemStart"+ data1, startday1);
-        editorfake.putString("ItemLast"+data1, "2011-12-27");
+        editorfake.putString("ItemLast"+data1, "2011-12-28");
         
         //data2
 		editorfake.putString("ItemTitle"+ data2, data2);
@@ -752,16 +848,16 @@ public class TestFineActivity extends Activity {
         editorfake.putInt("ItemLevel"+data2, 0);
         editorfake.putInt("ItemCheck"+data2, 0);
         editorfake.putString("ItemStart"+ data2, startday2);
-        editorfake.putString("ItemLast"+data2, "2011-12-27");
+        editorfake.putString("ItemLast"+data2, "2011-12-28");
         
         //data3
 		editorfake.putString("ItemTitle"+ data3, data3);
-        editorfake.putInt("ItemMax"+data3, 25);
+        editorfake.putInt("ItemMax"+data3, 41);
         editorfake.putInt("ItemCurrent"+data3, 20);
-        editorfake.putInt("ItemLevel"+data3, 0);
+        editorfake.putInt("ItemLevel"+data3, 1);
         editorfake.putInt("ItemCheck"+data3, 0);
         editorfake.putString("ItemStart"+ data3, startday3);
-        editorfake.putString("ItemLast"+data3, "2011-12-27");
+        editorfake.putString("ItemLast"+data3, "2011-12-28");//today time
         
         editorfake.commit();
     }

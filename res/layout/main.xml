@@ -34,5 +34,5 @@
 		android:id="@+id/list01" 
 		android:orientation="vertical" 
 		android:layout_height="wrap_content" 
-		android:layout_width="wrap_content" />
+		android:layout_width="wrap_content" android:cacheColorHint="#00000000" android:divider="#00000000" android:dividerHeight="0dp"/>
 </LinearLayout>
