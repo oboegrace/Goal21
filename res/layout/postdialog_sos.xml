@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:background="#99cc41">
+    <!-- <ImageView 
+    	android:id="@+id/level_image"
+    	android:layout_alignParentLeft="true"
+    	android:src="@drawable/lv3"
+    	android:layout_width = "wrap_content"
+    	android:layout_height = "wrap_content"
+    /> -->
+   	 <TextView
+        android:id="@+id/textViewPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_weight="2.04"
+        android:text="撐不下去了嗎? 快發求救到Facebook上請朋友們幫你集氣!!" 
+        android:textColor="#F0F0F0" 
+        android:textSize="17dp"/>
+    <EditText
+        android:id="@+id/sos_post"
+        android:layout_below="@id/textViewPost"
+        
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <!-- <Button
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dip"
+        android:text="OK" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/ok"
+        android:layout_alignTop="@id/ok"
+        android:text="Cancel" /> -->
+</RelativeLayout>

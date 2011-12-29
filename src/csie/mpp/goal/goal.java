@@ -219,71 +219,139 @@ public class goal extends Activity {
 	    current = bundle.getString("KEY_Goal_Current");
         level = bundle.getString("KEY_Goal_Level");//image
         start= bundle.getString("KEY_Goal_Start");
-        
+        Integer progress = Integer.parseInt(current);
+        progress = progress % 21;
 		Log.d("goal", goal);
 		if (level.compareTo("0")==0){
-			level_img.setImageResource(R.drawable.details_lv1_a);			
+			level_img.setImageResource(R.drawable.details_lv1);			
 		}else if (level.compareTo("1")==0){
-			level_img.setImageResource(R.drawable.details_lv1_b);			
+			level_img.setImageResource(R.drawable.details_lv2);			
 		}else if (level.compareTo("2")==0){
-			level_img.setImageResource(R.drawable.details_lv1_c);			
+			level_img.setImageResource(R.drawable.details_lv3);			
 		}else if (level.compareTo("3")==0){
-			level_img.setImageResource(R.drawable.details_lv2_a);			
+			level_img.setImageResource(R.drawable.details_lv4);			
 		}else if (level.compareTo("4")==0){
-			level_img.setImageResource(R.drawable.details_lv2_b);			
+			level_img.setImageResource(R.drawable.details_lv5);			
 		}else if (level.compareTo("5")==0){
-			level_img.setImageResource(R.drawable.details_lv2_c);			
+			level_img.setImageResource(R.drawable.details_lv6);			
 		}else if (level.compareTo("6")==0){
-			level_img.setImageResource(R.drawable.details_lv3_a);			
+			level_img.setImageResource(R.drawable.details_lv7);			
 		}else if (level.compareTo("7")==0){
-			level_img.setImageResource(R.drawable.details_lv3_b);			
+			level_img.setImageResource(R.drawable.details_lv8);			
 		}else if (level.compareTo("8")==0){
-			level_img.setImageResource(R.drawable.details_lv3_c);			
+			level_img.setImageResource(R.drawable.details_lv9);			
 		}
-		
-		if (current.compareTo("0")==0){
+		switch (progress){
+		case 0:
 			goal_name.setBackgroundResource(R.drawable.detail_bg0);			
-		}else if (current.compareTo("1")==0){
+			break;
+		case 1:
 			goal_name.setBackgroundResource(R.drawable.detail_bg1);			
-		}else if (current.compareTo("2")==0){
+			break;
+		case 2:
 			goal_name.setBackgroundResource(R.drawable.detail_bg2);			
-		}else if (current.compareTo("3")==0){
+			break;
+		case 3:
 			goal_name.setBackgroundResource(R.drawable.detail_bg3);			
-		}else if (current.compareTo("4")==0){
+			break;
+		case 4:
 			goal_name.setBackgroundResource(R.drawable.detail_bg4);			
-		}else if (current.compareTo("5")==0){
+			break;
+		case 5:
 			goal_name.setBackgroundResource(R.drawable.detail_bg5);			
-		}else if (current.compareTo("6")==0){
+			break;
+		case 6:
 			goal_name.setBackgroundResource(R.drawable.detail_bg6);			
-		}else if (current.compareTo("7")==0){
+			break;
+		case 7:
 			goal_name.setBackgroundResource(R.drawable.detail_bg7);			
-		}else if (current.compareTo("8")==0){
+			break;
+		case 8:
 			goal_name.setBackgroundResource(R.drawable.detail_bg8);		
-		}else if (current.compareTo("9")==0){
+			break;
+		case 9:
 			goal_name.setBackgroundResource(R.drawable.detail_bg9);			
-		}else if (current.compareTo("10")==0){
+			break;
+		case 10:
 			goal_name.setBackgroundResource(R.drawable.detail_bg10);			
-		}else if (current.compareTo("11")==0){
+			break;
+		case 11:
 			goal_name.setBackgroundResource(R.drawable.detail_bg11);			
-		}else if (current.compareTo("12")==0){
+			break;
+		case 12:
 			goal_name.setBackgroundResource(R.drawable.detail_bg12);			
-		}else if (current.compareTo("13")==0){
+			break;
+		case 13:
 			goal_name.setBackgroundResource(R.drawable.detail_bg13);			
-		}else if (current.compareTo("14")==0){
+			break;
+		case 14:
 			goal_name.setBackgroundResource(R.drawable.detail_bg14);			
-		}else if (current.compareTo("15")==0){
+			break;
+		case 15:
 			goal_name.setBackgroundResource(R.drawable.detail_bg15);			
-		}else if (current.compareTo("16")==0){
+			break;
+		case 16:
 			goal_name.setBackgroundResource(R.drawable.detail_bg16);		
-		}else if (current.compareTo("17")==0){
+			break;
+		case 17:
 			goal_name.setBackgroundResource(R.drawable.detail_bg17);			
-		}else if (current.compareTo("18")==0){
+			break;
+		case 18:
 			goal_name.setBackgroundResource(R.drawable.detail_bg18);			
-		}else if (current.compareTo("19")==0){
+			break;
+		case 19:
 			goal_name.setBackgroundResource(R.drawable.detail_bg19);			
-		}else if (current.compareTo("20")==0){
-			goal_name.setBackgroundResource(R.drawable.detail_bg20);		
+			break;
+		case 20:
+			goal_name.setBackgroundResource(R.drawable.detail_bg20);
+			break;
+		default:
+			goal_name.setBackgroundResource(R.drawable.detail_bg0);
+
 		}
+//		if (current.compareTo("0")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg0);			
+//		}else if (current.compareTo("1")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg1);			
+//		}else if (current.compareTo("2")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg2);			
+//		}else if (current.compareTo("3")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg3);			
+//		}else if (current.compareTo("4")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg4);			
+//		}else if (current.compareTo("5")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg5);			
+//		}else if (current.compareTo("6")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg6);			
+//		}else if (current.compareTo("7")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg7);			
+//		}else if (current.compareTo("8")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg8);		
+//		}else if (current.compareTo("9")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg9);			
+//		}else if (current.compareTo("10")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg10);			
+//		}else if (current.compareTo("11")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg11);			
+//		}else if (current.compareTo("12")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg12);			
+//		}else if (current.compareTo("13")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg13);			
+//		}else if (current.compareTo("14")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg14);			
+//		}else if (current.compareTo("15")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg15);			
+//		}else if (current.compareTo("16")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg16);		
+//		}else if (current.compareTo("17")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg17);			
+//		}else if (current.compareTo("18")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg18);			
+//		}else if (current.compareTo("19")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg19);			
+//		}else if (current.compareTo("20")==0){
+//			goal_name.setBackgroundResource(R.drawable.detail_bg20);		
+//		}
 
 		goal_name.setText(goal);
 	    goal_max.setText(max);

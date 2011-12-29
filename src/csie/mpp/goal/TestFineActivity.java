@@ -80,11 +80,11 @@ public class TestFineActivity extends Activity {
         SessionStore.restore(mFacebook, TestFineActivity.this);
         
         //插入Demo要用的假資料
-        if(!fake)
+       /* if(!fake)
         {
         	FakeData();
         	fake = true;
-        } 
+        } */
         mHandler = new Handler();
         mRunable = new Runnable(){
         //檢查與上次打勾的時間相差幾天，超過一天就將check狀態更新為未打勾
@@ -314,10 +314,78 @@ public class TestFineActivity extends Activity {
 		     							Integer max1 = (Integer) stmap4.get("ItemMax"+txtnum.getText().toString());
 		     		        			Integer level1 = (Integer)stmap4.get("ItemLevel"+txtnum.getText().toString());
 		     		        		    Integer current1 = (Integer) stmap4.get("ItemCurrent"+txtnum.getText().toString());
-		     		        			Log.d("check_Max", "readok");
+		     		        			
+		     		        		    Log.d("check_Max", "readok");
 		     		        		    
 		     		        			current1++;//update progress bar
-		     		        			   
+		     		        			
+		     		       			switch(current1 % 21){
+		     		       			case 0:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background);
+		     		       				break;
+		     		       			case 1:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background1);
+		     		       				break;
+		     		       			case 2:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background2);
+		     		       				break;
+		     		       			case 3:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background2);
+		     		       				break;
+		     		       			case 4:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background4);
+		     		       				break;
+		     		       			case 5:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background5);
+		     		       				break;
+		     		       			case 6:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background6);
+		     		       				break;
+		     		       			case 7:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background7);
+		     		       				break;
+		     		       			case 8:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background8);
+		     		       				break;
+		     		       			case 9:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background9);
+		     		       				break;
+		     		       			case 10:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background10);
+		     		       				break;
+		     		       			case 11:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background11);
+		     		       				break;
+		     		       			case 12:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background12);
+		     		       				break;
+		     		       			case 13:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background13);
+		     		       				break;
+		     		       			case 14:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background14);
+		     		       				break;
+		     		       			case 15:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background15);
+		     		       				break;
+		     		       			case 16:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background16);
+		     		       				break;
+		     		       			case 17:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background17);
+		     		       				break;
+		     		       			case 18:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background18);
+		     		       				break;
+		     		       			case 19:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background19);
+		     		       				break;
+		     		       			case 20:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background20);
+		     		       				break;
+		     		       			default:
+		     		       				txtnum.setBackgroundResource(R.drawable.goal_background);
+		     		       			}   
 		     		        			if( (level1*21 + current1) > max1)
 		     		        			{ 
 		     		        				  max1 ++;//update max date
@@ -327,9 +395,37 @@ public class TestFineActivity extends Activity {
 		     		        			{
 		     		        				    level1 ++;
 		     		        			 	    current1 = level1*21;
-		     		        			 	    level.setImageResource(R.drawable.lv3);
-//		     		        			 	    level.setImageResource(R.drawable);
 		     		        			 	    
+		     		        			 	    //level.setImageResource(R.drawable.lv3);
+//		     		        			 	    level.setImageResource(R.drawable);
+		     		        			 	  switch(level1){
+		  		     		       			case 0:
+		  		     		       				level.setImageResource(R.drawable.lv1);
+		  		     		       				break;
+		  		     		       			case 1:
+		  		     		       				level.setImageResource(R.drawable.lv2);
+		  		     		       				break;
+		  		     		       			case 2:
+		  		     		       				level.setImageResource(R.drawable.lv3);
+		  		     		       				break;
+		  		     		       			case 3:
+		  		     		       				level.setImageResource(R.drawable.lv4);
+		  		     		       				break;
+		  		     		       			case 4:
+		  		     		       				level.setImageResource(R.drawable.lv5);
+		  		     		       				break;
+		  		     		       			case 5:
+		  		     		       				level.setImageResource(R.drawable.lv6);
+		  		     		       				break;
+		  		     		       			case 6:
+		  		     		       				level.setImageResource(R.drawable.lv7);
+	  		     		       				break;
+		  		     		       			case 7:
+		  		     		       				level.setImageResource(R.drawable.lv8);
+		  		     		       			break;
+		  		     		       			default:
+		  		     		       				level.setImageResource(R.drawable.lv1);
+		  		     		       			}
 		     		        	              
 		     		        			 	    //alert dialog
 		     		        	       	    	LayoutInflater inflaterPost = LayoutInflater.from(TestFineActivity.this.getBaseContext());  		        	        
@@ -452,9 +548,11 @@ public class TestFineActivity extends Activity {
     			Integer level_num = (Integer) stmap2.get("ItemLevel"+txtnum.getText().toString());
     			level_num++;
     			Integer progress = (Integer) stmap2.get("ItemCurrent"+txtnum.getText().toString());
+    			progress = progress % 21;
+    			Log.d("goal","progress"+progress);
     			//String level_str = "R.drawable.lv"+level_num.toString();
     			
-    			Log.d("checkedtry",stmap2.get("ItemCheck"+txtnum.getText().toString()).toString());
+    			Log.d("goal","460 check:"+stmap2.get("ItemCheck"+txtnum.getText().toString()).toString());
     			
     			if(checked == 1)
                 {
